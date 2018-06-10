@@ -1,8 +1,7 @@
 export default `
-  type Query { books: [Book] }
-  type Book { title: String, author: String }
+  type Query { users: [User] }
+  type User { firstName: String, lastName: String, email: String, token: String }
 	type Mutation {
-  # A mutation to add a new channel to the list of channels
-  addBook(title: String!, author: String!): Book
-}
+	  addUser(firstName: String!, lastName: String!, email: String!, token: String!): User
+	}
 `;

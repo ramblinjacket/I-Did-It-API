@@ -1,23 +1,27 @@
 // Some fake data
-const books = [
+const users = [
   {
-    title: "Harry Potter and the Sorcerer's stone",
-    author: 'J.K. Rowling',
+		firstName: "Les",
+		lastName: "Barchard",
+		email: "les.barchard@gmail.com",
+		token: "sdfsfddsf",
   },
   {
-    title: 'Jurassic Park',
-    author: 'Michael Crichton',
+		firstName: "Travis",
+		lastName: "Massey",
+		email: "travis.massey@gmail.com",
+		token: "3234234",
   },
 ];
 
 export default {
-	Query: { books: () => books },
+	Query: { users: () => users },
 
   Mutation: {
-    addBook: (root, args) => {
-      const newBook = { author: args.author, title: args.title };
-      books.push(newBook);
-      return newBook;
+    addUser: (root, args) => {
+      const newUser = { firstName: args.firstName, lastName: args.lastName, email: args.email, token: args.token };
+      users.push(newUser);
+      return newUser;
     },
   },
 }
