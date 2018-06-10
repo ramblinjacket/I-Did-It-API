@@ -3,7 +3,8 @@ export default `
 		firstName: String, 
 		lastName: String, 
 		email: String, 
-		token: String 
+		token: String,
+		image: String,
 	}
 
 	type Query { 
@@ -15,7 +16,8 @@ export default `
 			firstName: String!, 
 			lastName: String!, 
 			email: String!, 
-			token: String!
+			token: String!,
+			image: String,
 		): User
 	}
 `;

@@ -1,32 +1,25 @@
-const express = require('express');
-const bodyParser = require('body-parser');
-const { graphqlExpress, graphiqlExpress } = require('apollo-server-express');
-const { makeExecutableSchema } = require('graphql-tools');
-const cors = require('cors');
-
+import express from 'express';
+import bodyParser from 'body-parser';
+import { graphqlExpress, graphiqlExpress } from 'apollo-server-express';
+import { makeExecutableSchema } from 'graphql-tools';
+import cors from 'cors';
 
 import resolvers from './api/resolvers';
 import typeDefs from './api/schema.gql';
 
-
-// Put together a schema
 const schema = makeExecutableSchema({
   typeDefs,
   resolvers,
 });
 
-// Initialize the app
 const app = express();
 
 app.use('*', cors({ origin: 'http://localhost:3000' }));
 
-// The GraphQL endpoint
 app.use('/graphql', bodyParser.json(), graphqlExpress({ schema }));
 
-// GraphiQL, a visual editor for queries
 app.use('/graphiql', graphiqlExpress({ endpointURL: '/graphql' }));
 
-// Start the server
 app.listen(3000, () => {
   console.log('Go to http://localhost:3000/graphiql to run queries!');
 });
