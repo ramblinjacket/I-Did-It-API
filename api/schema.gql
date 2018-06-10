@@ -1,7 +1,21 @@
 export default `
-  type Query { users: [User] }
-  type User { firstName: String, lastName: String, email: String, token: String }
+  type User { 
+		firstName: String, 
+		lastName: String, 
+		email: String, 
+		token: String 
+	}
+
+	type Query { 
+		users: [User] 
+	}
+  
 	type Mutation {
-	  addUser(firstName: String!, lastName: String!, email: String!, token: String!): User
+	  addUser(
+			firstName: String!, 
+			lastName: String!, 
+			email: String!, 
+			token: String!
+		): User
 	}
 `;

@@ -19,7 +19,11 @@ export default {
 
   Mutation: {
     addUser: (root, args) => {
-      const newUser = { firstName: args.firstName, lastName: args.lastName, email: args.email, token: args.token };
+      const newUser = { 
+				firstName: args.firstName, 
+				lastName: args.lastName, 
+				email: args.email, 
+				token: args.token };
       users.push(newUser);
       return newUser;
     },
