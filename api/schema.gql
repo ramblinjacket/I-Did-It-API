@@ -1,5 +1,6 @@
 export default `
   type User { 
+		id: String,
 		firstName: String, 
 		lastName: String, 
 		email: String, 
@@ -8,7 +9,7 @@ export default `
 	}
 
 	type Query { 
-		users: [User] 
+		users(id: String!): User 
 	}
   
 	type Mutation {
