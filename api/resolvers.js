@@ -11,5 +11,13 @@ const books = [
 ];
 
 export default {
-  Query: { books: () => books },
+	Query: { books: () => books },
+
+  Mutation: {
+    addBook: (root, args) => {
+      const newBook = { author: args.author, title: args.title };
+      books.push(newBook);
+      return newBook;
+    },
+  },
 }
