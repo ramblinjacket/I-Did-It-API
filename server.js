@@ -3,6 +3,7 @@ import bodyParser from 'body-parser';
 import { graphqlExpress, graphiqlExpress } from 'apollo-server-express';
 import { makeExecutableSchema } from 'graphql-tools';
 import cors from 'cors';
+import db from './db';
 
 import resolvers from './api/resolvers';
 import typeDefs from './api/schema.gql';
@@ -20,4 +21,7 @@ app.use('/graphql', bodyParser.json(), graphqlExpress({ schema }));
 
 app.use('/graphiql', graphiqlExpress({ endpointURL: '/graphql' }));
 
-app.listen(3000, () => {});
+db.sequelize.sync({})
+  .then(() => {
+    app.listen(3000, () => {});
+  });
