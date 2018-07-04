@@ -10,16 +10,18 @@ config.define = {
   freezeTableName: true,
 };
 
+const dbInit = (sequelize) => {
+  const user = sequelize.import('./user');
+  db[user.name] = user;
+  db.sequelize = sequelize;
+  db.Sequelize = Sequelize;
+  module.exports = db;
+};
+
 if (config.use_env_variable) {
-  var sequelize = new Sequelize(process.env[config.use_env_variable],config);
+  const sequelize = new Sequelize(process.env[config.use_env_variable],config);
+  dbInit(sequelize);
 } else {
-  var sequelize = new Sequelize(config.database, config.username, config.password, config);
+  const sequelize = new Sequelize(config.database, config.username, config.password, config);
+  dbInit(sequelize);
 }
-
-const user = sequelize.import('./user');
-db[user.name] = user;
-
-db.sequelize = sequelize;
-db.Sequelize = Sequelize;
-
-module.exports = db;
