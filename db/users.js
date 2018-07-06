@@ -1,5 +1,5 @@
 export default (sequelize, DataTypes) => {
-  const User = sequelize.define('User', {
+  const Users = sequelize.define('Users', {
     Id: {
       type: DataTypes.STRING,
       primaryKey: true,
@@ -11,5 +11,5 @@ export default (sequelize, DataTypes) => {
     Image: DataTypes.STRING,
   });
 
-  return User;
+  return Users;
 };

@@ -11,8 +11,10 @@ config.define = {
 };
 
 const dbInit = (sequelize) => {
-  const user = sequelize.import('./user');
-  db[user.name] = user;
+  const users = sequelize.import('./users');
+  db[users.name] = users;
+  const didits = sequelize.import('./didits');
+  db[didits.name] = didits;
   db.sequelize = sequelize;
   db.Sequelize = Sequelize;
   module.exports = db;
