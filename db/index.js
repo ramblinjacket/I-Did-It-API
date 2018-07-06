@@ -21,7 +21,7 @@ const dbInit = (sequelize) => {
 };
 
 if (config.use_env_variable) {
-  const sequelize = new Sequelize(process.env[config.use_env_variable],config);
+  const sequelize = new Sequelize(process.env[config.use_env_variable], config);
   dbInit(sequelize);
 } else {
   const sequelize = new Sequelize(config.database, config.username, config.password, config);
