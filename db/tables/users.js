@@ -1,14 +1,14 @@
 export default (sequelize, DataTypes) => {
   const Users = sequelize.define('Users', {
-    Id: {
+    id: {
       type: DataTypes.STRING,
       primaryKey: true,
     },
-    FirstName: DataTypes.STRING,
-    LastName: DataTypes.STRING,
-    Email: DataTypes.STRING,
-    Token: DataTypes.STRING,
-    Image: DataTypes.STRING,
+    firstName: DataTypes.STRING,
+    lastName: DataTypes.STRING,
+    email: DataTypes.STRING,
+    token: DataTypes.STRING,
+    image: DataTypes.STRING,
   });
 
   return Users;

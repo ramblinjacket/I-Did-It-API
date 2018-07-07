@@ -42,17 +42,22 @@ export default {
   },
 
   Mutation: {
-    addUser: (root, args) => {
-      const newUser = {
-        id: uuidv4(),
-        firstName: args.firstName,
-        lastName: args.lastName,
-        email: args.email,
-        token: args.token,
-        image: args.image,
-      };
-      users.push(newUser);
-      return newUser;
+    addUser: async (root, args) => {
+      try {
+        console.log(args)
+        const user = await
+        db.Users.create({
+          id: uuidv4(),
+          firstName: args.firstName,
+          lastName: args.lastName,
+          email: args.email,
+          token: args.token,
+          image: args.image,
+        });
+        return user;
+      } catch (e) {
+        return {};
+      }
     },
   },
 };
