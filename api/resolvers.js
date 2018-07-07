@@ -44,7 +44,6 @@ export default {
   Mutation: {
     addUser: async (root, args) => {
       try {
-        console.log(args)
         const user = await
         db.Users.create({
           id: uuidv4(),
