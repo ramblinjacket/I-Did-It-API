@@ -16,7 +16,7 @@ export default {
             'Image',
           ],
           where: {
-            Id: args.id,
+            token: args.token,
           },
         });
         return {

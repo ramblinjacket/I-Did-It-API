@@ -9,7 +9,7 @@ export default `
 	}
 
 	type Query { 
-		users(id: String!): User 
+		users(token: String!): User 
 	}
   
 	type Mutation {
