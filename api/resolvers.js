@@ -55,7 +55,14 @@ export default {
         });
         return user;
       } catch (e) {
-        return {};
+        return {
+          id: '',
+          firstName: '',
+          lastName: '',
+          email: '',
+          token: '',
+          image: '',
+        };
       }
     },
   },
