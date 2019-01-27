@@ -26,6 +26,7 @@ export default {
           email: user.dataValues.Email,
           token: user.dataValues.Token,
           image: user.dataValues.Image,
+          created: false,
         };
       } catch (e) {
         return {
@@ -36,6 +37,7 @@ export default {
           token: '',
           image: '',
           state: '',
+          created: false,
         };
       }
     },
@@ -44,16 +46,27 @@ export default {
   Mutation: {
     addUser: async (root, args) => {
       try {
-        const user = await
-        db.Users.create({
-          id: uuidv4(),
-          firstName: args.firstName,
-          lastName: args.lastName,
-          email: args.email,
-          token: args.token,
-          image: args.image,
+        const [result, created] = await db.Users.findOrCreate({
+          where: {
+            token: args.token,
+          },
+          defaults: {
+            id: uuidv4(),
+            firstName: args.firstName,
+            lastName: args.lastName,
+            email: args.email,
+            image: args.image,
+          },
         });
-        return user;
+        return {
+          id: 'result.id',
+          firstName: result.firstName,
+          lastName: result.lastName,
+          email: result.email,
+          token: result.token,
+          image: result.image,
+          created: created,
+        };
       } catch (e) {
         return {
           id: '',
@@ -62,6 +75,7 @@ export default {
           email: '',
           token: '',
           image: '',
+          created: false,
         };
       }
     },
