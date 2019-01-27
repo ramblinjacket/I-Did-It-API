@@ -48,7 +48,7 @@ export default {
       try {
         const [result, created] = await db.Users.findOrCreate({
           where: {
-            token: args.token,
+            token: args.email,
           },
           defaults: {
             id: uuidv4(),
@@ -59,7 +59,7 @@ export default {
           },
         });
         return {
-          id: 'result.id',
+          id: result.id,
           firstName: result.firstName,
           lastName: result.lastName,
           email: result.email,
