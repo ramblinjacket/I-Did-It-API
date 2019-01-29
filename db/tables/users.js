@@ -7,7 +7,7 @@ export default (sequelize, DataTypes) => {
     firstName: DataTypes.STRING,
     lastName: DataTypes.STRING,
     email: DataTypes.STRING,
-    token: DataTypes.TEXT,
+    token: DataTypes.STRING,
     image: DataTypes.STRING,
   });
 

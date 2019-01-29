@@ -48,12 +48,13 @@ export default {
       try {
         const [result, created] = await db.Users.findOrCreate({
           where: {
-            token: args.email,
+            token: args.token,
           },
           defaults: {
             id: uuidv4(),
             firstName: args.firstName,
             lastName: args.lastName,
+            token: args.token,
             email: args.email,
             image: args.image,
           },
@@ -65,7 +66,7 @@ export default {
           email: result.email,
           token: result.token,
           image: result.image,
-          created: created,
+          created,
         };
       } catch (e) {
         return {
