@@ -1,8 +1,12 @@
 const Sequelize = require('sequelize');
 
-const env = process.env.NODE_ENV || 'development';
-
-const config = require('./config.json')[env];
+const config = {
+  username: process.env.dbUserName,
+  password: process.env.dbPassword,
+  database: process.env.dbDatabase,
+  host: process.env.dbHost,
+  dialect: 'mysql',
+};
 
 const db = {};
 
