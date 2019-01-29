@@ -15,7 +15,7 @@ const schema = makeExecutableSchema({
 
 const app = express();
 
-app.use('*', cors({ origin: 'http://localhost:3001' }));
+app.use('*', cors({ origin: process.env.clientURL }));
 
 app.use('/graphql', bodyParser.json(), graphqlExpress({ schema }));
 
