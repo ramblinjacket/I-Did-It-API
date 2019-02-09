@@ -8,6 +8,7 @@ export default (sequelize, DataTypes) => {
     comment: DataTypes.STRING,
     image: DataTypes.STRING,
     type: DataTypes.INTEGER,
+    date: DataTypes.DATEONLY,
   });
 
   return Didits;

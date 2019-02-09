@@ -19,6 +19,7 @@ export default {
             token: args.token,
           },
         });
+        console.log(user);
         return {
           id: user.dataValues.Id,
           firstName: user.dataValues.FirstName,
@@ -38,6 +39,36 @@ export default {
           image: '',
           state: '',
           created: false,
+        };
+      }
+    },
+    mydidits: async (root, args) => {
+      try {
+        const mydidit = await
+        db.Didits.findOne({
+          attributes: [
+            'Id',
+            'UserId',
+            'Comment',
+            'Image',
+            'Date',
+          ],
+          where: {
+            userid: args.userId,
+          },
+        });
+        return {
+          id: mydidit.dataValues.Id,
+          comment: mydidit.dataValues.Comment,
+          image: mydidit.dataValues.Image,
+          date: mydidit.dataValues.Date,
+        };
+      } catch (e) {
+        return {
+          id: '',
+          comment: '',
+          image: '',
+          date: '',
         };
       }
     },

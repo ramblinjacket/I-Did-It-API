@@ -9,8 +9,16 @@ export default `
 		created: Boolean,
 	}
 
+	type Didit {
+		id: String,
+		comment: String,
+    image: String,
+		date: String
+	}
+
 	type Query { 
-		users(token: String!): User 
+		users(token: String!): User,
+		mydidits(userId: String!): Didit
 	}
   
 	type Mutation {
