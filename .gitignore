@@ -62,3 +62,5 @@ typings/
 
 # local copy of db configuration
 db/config.json
+sendgrid.env
+sendgrid.env

@@ -1,6 +1,9 @@
 import uuidv4 from 'uuid/v4';
 import db from '../db';
 
+const sgMail = require('@sendgrid/mail');
+sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+
 export default {
   Query: {
     users: async (root, args) => {
@@ -127,6 +130,15 @@ export default {
             date: args.date,
           },
         });
+        const msg = {
+          to: 'les.barchard@gmail.com',
+          from: 'test@example.com',
+          subject: 'Sending with SendGrid is Fun',
+          text: 'and easy to do anywhere, even with Node.js',
+          html: '<strong>and easy to do anywhere, even with Node.js</strong>',
+        };
+        sgMail.send(msg);
+        console.log(result);
         return {
           id: result.id,
           userId: result.userId,
