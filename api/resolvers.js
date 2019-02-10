@@ -45,6 +45,7 @@ export default {
       try {
         const mydidit = await
         db.Didits.findAll({
+          order: [['date', 'DESC']],
           attributes: [
             'id',
             'comment',
