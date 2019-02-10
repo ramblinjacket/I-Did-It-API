@@ -19,7 +19,6 @@ export default {
             token: args.token,
           },
         });
-        console.log(user);
         return {
           id: user.dataValues.Id,
           firstName: user.dataValues.FirstName,
@@ -111,7 +110,6 @@ export default {
     },
     addDidit: async (root, args) => {
       try {
-        console.log(args.date)
         const [result, created] = await db.Didits.findOrCreate({
           where: {
             userId: args.userId,
@@ -146,6 +144,6 @@ export default {
           created: false,
         };
       }
-    }
+    },
   },
 };
