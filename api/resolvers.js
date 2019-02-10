@@ -45,24 +45,23 @@ export default {
     mydidits: async (root, args) => {
       try {
         const mydidit = await
-        db.Didits.findOne({
+        db.Didits.findAll({
           attributes: [
-            'Id',
-            'UserId',
-            'Comment',
-            'Image',
-            'Date',
+            'id',
+            'comment',
+            'image',
+            'date',
           ],
           where: {
             userid: args.userId,
           },
         });
-        return {
-          id: mydidit.dataValues.Id,
-          comment: mydidit.dataValues.Comment,
-          image: mydidit.dataValues.Image,
-          date: mydidit.dataValues.Date,
-        };
+        const didits = [];
+        mydidit.forEach(didit => {
+          didits.push(didit.dataValues)
+        });  
+
+        return didits;
       } catch (e) {
         return {
           id: '',

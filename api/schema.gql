@@ -18,7 +18,7 @@ export default `
 
 	type Query { 
 		users(token: String!): User,
-		mydidits(userId: String!): Didit
+		mydidits(userId: String!): [Didit]
 	}
   
 	type Mutation {
