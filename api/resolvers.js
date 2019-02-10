@@ -57,10 +57,9 @@ export default {
           },
         });
         const didits = [];
-        mydidit.forEach(didit => {
+        mydidit.forEach((didit) => {
           didits.push(didit.dataValues)
-        });  
-
+        });
         return didits;
       } catch (e) {
         return {
@@ -110,5 +109,42 @@ export default {
         };
       }
     },
+    addDidit: async (root, args) => {
+      try {
+        const [result, created] = await db.Didits.findOrCreate({
+          where: {
+            userId: args.userId,
+            date: args.date,
+            type: 1,
+          },
+          defaults: {
+            id: uuidv4(),
+            userId: args.userId,
+            comment: args.comment,
+            image: args.image,
+            type: 1,
+            date: args.date,
+          },
+        });
+        return {
+          id: result.id,
+          userId: result.userId,
+          comment: result.comment,
+          image: result.image,
+          type: result.type,
+          date: result.date,
+          created,
+        };
+      } catch (e) {
+        return {
+          id: '',
+          userId: '',
+          comment: '',
+          image: '',
+          date: '',
+          created: false,
+        };
+      }
+    }
   },
 };

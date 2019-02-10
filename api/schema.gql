@@ -11,9 +11,11 @@ export default `
 
 	type Didit {
 		id: String,
+		userId: String,
 		comment: String,
     image: String,
 		date: String
+		created: Boolean,
 	}
 
 	type Query { 
@@ -29,6 +31,13 @@ export default `
 			token: String!,
 			image: String,
 			created: Boolean,
-		): User
+		): User,
+		addDidit(
+			userId: String!,
+			comment: String!, 
+			image: String!, 
+			date: String!, 
+			created: Boolean,
+		): Didit,
 	}
 `;
