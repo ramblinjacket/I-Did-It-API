@@ -34,8 +34,8 @@ export default `
 		): User,
 		addDidit(
 			userId: String!,
-			comment: String!, 
-			image: String!, 
+			comment: String, 
+			image: String, 
 			date: String!, 
 			created: Boolean,
 		): Didit,
