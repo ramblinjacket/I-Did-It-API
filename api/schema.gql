@@ -16,6 +16,7 @@ export default `
     image: String,
 		date: String
 		created: Boolean,
+		type: Int,
 	}
 
 	type Query { 
@@ -35,6 +36,7 @@ export default `
 		addDidit(
 			userId: String!,
 			comment: String, 
+			type: Int,
 			image: String, 
 			date: String!, 
 			created: Boolean,

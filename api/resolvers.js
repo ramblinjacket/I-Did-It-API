@@ -2,6 +2,7 @@ import uuidv4 from 'uuid/v4';
 import db from '../db';
 
 const sgMail = require('@sendgrid/mail');
+
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 export default {
@@ -48,12 +49,13 @@ export default {
       try {
         const mydidit = await
         db.Didits.findAll({
-          order: [['date', 'DESC']],
+          order: [['date', 'DESC'], ['type', 'DESC']],
           attributes: [
             'id',
             'comment',
             'image',
             'date',
+            'type',
           ],
           where: {
             userid: args.userId,
@@ -70,6 +72,7 @@ export default {
           comment: '',
           image: '',
           date: '',
+          type: '',
         };
       }
     },
@@ -119,26 +122,25 @@ export default {
           where: {
             userId: args.userId,
             date: args.date,
-            type: 1,
+            type: args.type,
           },
           defaults: {
             id: uuidv4(),
             userId: args.userId,
             comment: args.comment,
             image: args.image,
-            type: 1,
+            type: args.type,
             date: args.date,
           },
         });
         const msg = {
           to: 'les.barchard@gmail.com',
           from: 'test@example.com',
-          subject: 'Sending with SendGrid is Fun',
-          text: 'and easy to do anywhere, even with Node.js',
-          html: '<strong>and easy to do anywhere, even with Node.js</strong>',
+          subject: 'I Did It',
+          text: 'I got my goal done today!  You should too!',
+          html: '<strong>I got my goal done today!  You should too!</strong>',
         };
         sgMail.send(msg);
-        console.log(result);
         return {
           id: result.id,
           userId: result.userId,
