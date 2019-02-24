@@ -49,7 +49,7 @@ export default {
       try {
         const mydidit = await
         db.Didits.findAll({
-          order: [['date', 'ASC'], ['type', 'ASC']],
+          order: [['createdAt', 'ASC'], ['type', 'ASC']],
           attributes: [
             'id',
             'comment',
