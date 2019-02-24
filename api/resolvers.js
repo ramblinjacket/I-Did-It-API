@@ -49,7 +49,7 @@ export default {
       try {
         const mydidit = await
         db.Didits.findAll({
-          order: [['date', 'DESC'], ['type', 'DESC']],
+          order: [['date', 'ASC'], ['type', 'ASC']],
           attributes: [
             'id',
             'comment',
@@ -63,7 +63,7 @@ export default {
         });
         const didits = [];
         mydidit.forEach((didit) => {
-          didits.push(didit.dataValues)
+          didits.push(didit.dataValues);
         });
         return didits;
       } catch (e) {
